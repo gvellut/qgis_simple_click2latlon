@@ -1,0 +1,17 @@
+Create a plugin for qGIS 4 (no compatibility with qgis 3 needed).
+Follow the layout from /Users/guilhem/dev/projects/github/qgis_simple_remote_control for source doe + metadata
+The plugin will be some variant of /Users/guilhem/dev/projects/external/qgis_clickfu :  it allows to add / edit / delete new services (with a URL template) + a tool that will open in browser with clicked lat lon.
+
+3 parts :
+- a setting panel : it will allows to add / edit / delete new websites. Also settings : Enabled (checkbox ; if not enabled, not shown either in menu or in tool) ; Separate tool (checkbox) ; icon (an image path ; show warning if path does not exist ; if no icon : a generic icon ; when the setting is saved : copy the icon to plugin data directory and set the path to there ; if service is removed or path of icon changed, also delete the icon if saved there ; when showing the path to the icon that is inside the plugin data dir : only show the base filename ; if icons iwth same name, copy wiht some suffix) ; also globally, a checkbox : Tool with all services (default checked ; if a tool has Separate tool checked : do not show it in the tool with all the services)
+    - a website has definition : name + URL template with lat lon as variables eg https://www.peakfinder.com/?lat={lat}&lng={lon}. The plugin will open that URL and replace the lat lon variables based on the location cllicked (reprojected possibly).
+    - also have export / import buttons to JSON for the definitions listed.
+- a plugin menu : Simple Click2LatLon : with the list of all enabled services (including with Separate tool). It will enable one of the website (show a checkmark next to the website if menu is reopened before the next click on the map). The next click on the map will open the service with the lat lon. Then afteer the one click the map tool that was last active is reactivated. If there is a maptool icon for the chosen service make it active. If there is no separate tool for the service but  Tool with all services is enabled  : show the icon as selected (with the website selected ; make the state common bw the menu + mapptool icon).
+- a list of tools with icons : depending on the settings. if  Tool with all services is true : a tool that shows a list of websites (only those enabled and iwthout separate tool) on click : when one is selected : the tool becomes active with that website (checkmark like with the menu) : the next click on the map opens the website (exactly like with teh plugin menu). If website has Separate tool : show a tool for each of those websites with the icon chosen or generic. Then if activated, the next click opens the website. After the one click the map tool that was last active is reactivated.
+
+By default, create a service with Peakfinder https://www.peakfinder.com/?lat={lat}&lng={lon} and the icon a symbol of mountains. the definition can be edited or deleted by the user (but do not modify the plugin dir ie do not delete the icon from disk).
+Plugin dir is inside the profile eg in macos : QuickMapServices plugin has some user config inside '/Users/guilhem/Library/Application Support/QGIS/QGIS4/profiles/default/QuickMapServices' so do osmething similar.
+
+Create an icon for the plugin. Not the same as for click fu. Create the icons generic and  Tool with all services (different ; but variation so visisble it comes from the same plugin)
+
+also create a symlink in /Users/guilhem/dev/projects/qgis like the other in the folder.

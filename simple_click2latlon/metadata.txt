@@ -1,0 +1,14 @@
+[general]
+name=Simple Click2LatLon
+description=Open a website at the coordinates of a click on the map
+version=0.1.0
+qgisMinimumVersion=4.0
+qgisMaximumVersion=4.99
+author=Guilhem
+email=
+about=Define websites with latitude and longitude URL templates and open them from the map in your browser. Includes Peakfinder.
+homepage=https://github.com/gvellut/qgis_simple_click2latlon
+repository=https://github.com/gvellut/qgis_simple_click2latlon
+tracker=https://github.com/gvellut/qgis_simple_click2latlon/issues
+category=Map Tools
+icon=icons/simple-click2latlon.svg
